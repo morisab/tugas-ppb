@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -55,7 +56,7 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFB3E5FC))
+            .background(Color(0xFFF3E5F5))
             .wrapContentSize(Alignment.Center),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -88,10 +89,14 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .padding(16.dp)
                 .size(width = 200.dp, height = 60.dp),
-            enabled = !isRolling
+            enabled = !isRolling,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF9575CD),
+                contentColor = Color.White
+            )
         ) {
             Text(
-                text = if (isRolling) "Rolling..." else stringResource(R.string.roll),
+                text = if (isRolling) stringResource(R.string.rolling) else stringResource(R.string.roll),
                 fontSize = 24.sp
             )
         }
