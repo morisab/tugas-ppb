@@ -25,11 +25,12 @@ import java.time.format.DateTimeFormatter
 fun TaskItem(
     task: Task,
     onTaskChecked: (Int) -> Unit,
-    onDelete: (Int) -> Unit,
+    onDelete: (Task) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val currentDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
-    val isOverdue = !task.isCompleted && task.deadline < currentDateTime
+    val deadline = task.deadlineToLocalDateTime()
+    val isOverdue = !task.isCompleted && deadline < currentDateTime
 
     Card(
         modifier = modifier
@@ -104,9 +105,9 @@ fun TaskItem(
 
                     Text(
                         text = buildString {
-                            append("${task.deadline.dayOfMonth}/${task.deadline.monthNumber}/${task.deadline.year}")
+                            append("${deadline.dayOfMonth}/${deadline.monthNumber}/${deadline.year}")
                             append(" • ")
-                            append("%02d:%02d".format(task.deadline.hour, task.deadline.minute))
+                            append("%02d:%02d".format(deadline.hour, deadline.minute))
                             if (isOverdue) append(" (Overdue)")
                         },
                         style = MaterialTheme.typography.labelMedium,
@@ -119,7 +120,7 @@ fun TaskItem(
                 }
             }
 
-            IconButton(onClick = { onDelete(task.id) }) {
+            IconButton(onClick = { onDelete(task) }) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
                     contentDescription = "Delete",

@@ -28,7 +28,7 @@ import com.example.todoapp.R
 @Composable
 fun TodoScreen(viewModel: TaskViewModel = viewModel()) {
     var showDialog by remember { mutableStateOf(false) }
-    val tasks by viewModel.tasks.collectAsState()
+    val tasks by viewModel.tasks.collectAsState(initial = emptyList())
     val sortType by viewModel.sortType.collectAsState()
 
     Scaffold(
@@ -122,12 +122,8 @@ fun TodoScreen(viewModel: TaskViewModel = viewModel()) {
                     items(tasks) { task ->
                         TaskItem(
                             task = task,
-                            onTaskChecked = { taskId ->
-                                viewModel.toggleTaskCompletion(taskId)
-                            },
-                            onDelete = { taskId ->
-                                viewModel.deleteTask(taskId)
-                            }
+                            onTaskChecked = viewModel::toggleTaskCompletion,
+                            onDelete = viewModel::deleteTask
                         )
                     }
                 }

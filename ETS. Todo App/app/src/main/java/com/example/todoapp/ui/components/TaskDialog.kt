@@ -40,7 +40,7 @@ fun TaskDialog(
         mutableStateOf(
             currentDateTime.time
                 .toSecondOfDay()
-                .plus(3600) // Add 1 hour in seconds
+                .plus(3600)
                 .toLocalTime()
         )
     }
@@ -159,7 +159,6 @@ fun TaskDialog(
                     }
                 }
 
-                // Action Buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -184,8 +183,7 @@ fun TaskDialog(
                                 deadlineTime.minute
                             )
                             onConfirm(
-                                Task(
-                                    id = Random.nextInt(),
+                                Task.fromLocalDateTime(
                                     title = title,
                                     description = description,
                                     deadline = deadline
