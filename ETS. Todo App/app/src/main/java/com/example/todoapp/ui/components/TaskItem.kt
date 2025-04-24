@@ -1,5 +1,6 @@
 package com.example.todoapp.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -19,12 +20,15 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import java.time.format.DateTimeFormatter
+import com.example.todoapp.R
+import androidx.compose.ui.res.stringResource
 
 
 @Composable
 fun TaskItem(
     task: Task,
     onTaskChecked: (Int) -> Unit,
+    onEdit: (Task) -> Unit,
     onDelete: (Task) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -35,6 +39,7 @@ fun TaskItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
+            .clickable { onEdit(task) }
             .padding(horizontal = 16.dp, vertical = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
@@ -94,7 +99,7 @@ fun TaskItem(
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Schedule,
-                        contentDescription = "Deadline",
+                        contentDescription = stringResource(R.string.deadline_desc),
                         tint = if (isOverdue) {
                             MaterialTheme.colorScheme.error
                         } else {
@@ -108,7 +113,7 @@ fun TaskItem(
                             append("${deadline.dayOfMonth}/${deadline.monthNumber}/${deadline.year}")
                             append(" • ")
                             append("%02d:%02d".format(deadline.hour, deadline.minute))
-                            if (isOverdue) append(" (Overdue)")
+                            if (isOverdue) append(stringResource(R.string.overdue_indicator))
                         },
                         style = MaterialTheme.typography.labelMedium,
                         color = if (isOverdue) {
@@ -123,7 +128,7 @@ fun TaskItem(
             IconButton(onClick = { onDelete(task) }) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
-                    contentDescription = "Delete",
+                    contentDescription = stringResource(R.string.delete_desc),
                     tint = MaterialTheme.colorScheme.error.copy(alpha = 0.6f)
                 )
             }

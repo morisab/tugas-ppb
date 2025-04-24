@@ -8,40 +8,38 @@ import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.todoapp.data.Task
 import kotlinx.datetime.*
-import kotlin.random.Random
 import java.util.*
+import androidx.compose.ui.res.stringResource
+import com.example.todoapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TaskDialog(
     onDismiss: () -> Unit,
-    onConfirm: (Task) -> Unit
+    onConfirm: (Task) -> Unit,
+    taskToEdit: Task? = null
 ) {
-    var title by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
+    var title by remember { mutableStateOf(taskToEdit?.title ?: "") }
+    var description by remember { mutableStateOf(taskToEdit?.description ?: "") }
     val currentDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
 
     var deadlineDate by remember {
-        mutableStateOf(currentDateTime.date)
+        mutableStateOf(taskToEdit?.deadlineToLocalDateTime()?.date ?: currentDateTime.date)
     }
 
     var deadlineTime by remember {
         mutableStateOf(
-            currentDateTime.time
-                .toSecondOfDay()
-                .plus(3600)
-                .toLocalTime()
+            taskToEdit?.deadlineToLocalDateTime()?.time
+                ?: LocalTime(23, 59)
         )
     }
 
@@ -61,7 +59,7 @@ fun TaskDialog(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(
-                    text = "Create New Task",
+                    text = if (taskToEdit == null) stringResource(R.string.dialog_title_create) else stringResource(R.string.dialog_title_edit),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
@@ -70,7 +68,7 @@ fun TaskDialog(
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
-                    label = { Text("Task Title*") },
+                    label = { Text(stringResource(R.string.task_title_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
@@ -82,7 +80,7 @@ fun TaskDialog(
                 OutlinedTextField(
                     value = description,
                     onValueChange = { description = it },
-                    label = { Text("Description") },
+                    label = { Text(stringResource(R.string.task_description_label)) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 100.dp),
@@ -115,7 +113,7 @@ fun TaskDialog(
                     ) {
                         Icon(
                             Icons.Default.CalendarToday,
-                            contentDescription = "Select date",
+                            contentDescription = stringResource(R.string.select_date_desc),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(18.dp)
                         )
@@ -146,7 +144,7 @@ fun TaskDialog(
                     ) {
                         Icon(
                             Icons.Default.Schedule,
-                            contentDescription = "Select time",
+                            contentDescription = stringResource(R.string.select_time_desc),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(18.dp)
                         )
@@ -170,7 +168,7 @@ fun TaskDialog(
                             contentColor = MaterialTheme.colorScheme.onSurface
                         )
                     ) {
-                        Text("Cancel")
+                        Text(stringResource(R.string.button_cancel))
                     }
 
                     Button(
@@ -188,6 +186,7 @@ fun TaskDialog(
                                     description = description,
                                     deadline = deadline
                                 )
+                                    .copy(id = taskToEdit?.id ?: 0)
                             )
                             onDismiss()
                         },
@@ -198,7 +197,7 @@ fun TaskDialog(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("Create")
+                        Text(if (taskToEdit == null) stringResource(R.string.button_create) else stringResource(R.string.button_save))
                     }
                 }
             }
