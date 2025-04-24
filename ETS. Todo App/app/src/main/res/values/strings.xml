@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">Todo App</string>
+    <string name="app_name">TodoApp</string>
+
+    <string name="screen_title_todo">TaskManager</string>
+    <string name="sort_by_deadline">(by Deadline)</string>
+    <string name="sort_by_status">(by Status)</string>
+    <string name="sort_deadline_desc">Sort by deadline</string>
+    <string name="sort_status_desc">Sort by status</string>
+    <string name="add_task_desc">Add task</string>
+    <string name="empty_state_title">No tasks yet!</string>
+    <string name="empty_state_message">Tap + to add your first task</string>
+    <string name="empty_state_desc">No tasks icon</string>
+
+    <string name="deadline_desc">Deadline</string>
+    <string name="delete_desc">Delete</string>
+    <string name="overdue_indicator">(Overdue)</string>
+
+    <string name="dialog_title_create">Create New Task</string>
+    <string name="dialog_title_edit">Edit Task</string>
+    <string name="task_title_label">Task Title*</string>
+    <string name="task_description_label">Description</string>
+    <string name="select_date_desc">Select date</string>
+    <string name="select_time_desc">Select time</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_create">Create</string>
+    <string name="button_save">Save</string>
+
+    <string name="dialog_confirm_delete_title">Confirm Deletion</string>
+    <string name="dialog_confirm_delete_message">Are you sure you want to delete task: \"%s\"?</string>
+    <string name="button_yes_delete">Yes, Delete</string>
+
 </resources>
