@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (C) 2023 The Android Open Source Project.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <string name="app_name">Woof</string>
+
+    <!-- Dog Names -->
+    <string name="dog_name_1">Koda</string>
+    <string name="dog_name_2">Lola</string>
+    <string name="dog_name_3">Frankie</string>
+    <string name="dog_name_4">Nox</string>
+    <string name="dog_name_5">Faye</string>
+    <string name="dog_name_6">Bella</string>
+    <string name="dog_name_7">Moana</string>
+    <string name="dog_name_8">Tzeitel</string>
+    <string name="dog_name_9">Leroy</string>
+
+    <!-- Dog Descriptions -->
+    <string name="dog_description_1">Koda is a playful Australian Shepherd who loves herding and outdoor activities. He\'s great with kids and very intelligent. Currently enjoying eating treats on the terrace.</string>
+    <string name="dog_description_2">Lola is a sweet senior poodle who enjoys gentle walks and cuddle time. She\'s very gentle and well-trained, though she still barks at Daddy when she wants attention.</string>
+    <string name="dog_description_3">Frankie is a mischievous French Bulldog with a talent for stealing socks and hiding them in his secret stash. Full of energy and always making us laugh.</string>
+    <string name="dog_description_4">Nox is an energetic Border Collie who loves meeting new animals and people. Highly intelligent and always ready for an adventure or a new challenge.</string>
+    <string name="dog_description_5">Faye is a gentle Golden Retriever who enjoys digging in the garden (much to our dismay). She\'s incredibly patient and great with children.</string>
+    <string name="dog_description_6">Bella is a water-loving Labrador who can\'t resist chasing sea foam at the beach. Despite her age, she still plays like a puppy when near water.</string>
+    <string name="dog_description_7">Moana is a beautiful Siberian Husky who specializes in bothering her paw-rents for attention. She loves cold weather and has a dramatic howl.</string>
+    <string name="dog_description_8">Tzeitel is a sun-loving Dachshund who spends hours sunbathing in her favorite spot. She\'s stubborn but incredibly affectionate on her own terms.</string>
+    <string name="dog_description_9">Leroy is a loyal German Shepherd with a habit of sleeping in the most dangerous places (like right in the middle of the hallway). Protective and loving.</string>
+
+    <!-- Common Strings -->
+    <string name="about">About:</string>
+    <string name="years_old">%d years old</string>
+    <string name="expand_button_content_description">See more or less information about a dog</string>
+    <string name="favorite_button_content_description">Add to favorites</string>
+    <string name="unfavorite_button_content_description">Remove from favorites</string>
+    <string name="share_button_content_description">Share this dog\'s profile</string>
+
+    <!-- Breed Names -->
+    <string name="breed_australian_shepherd">Australian Shepherd</string>
+    <string name="breed_poodle">Poodle</string>
+    <string name="breed_french_bulldog">French Bulldog</string>
+    <string name="breed_border_collie">Border Collie</string>
+    <string name="breed_golden_retriever">Golden Retriever</string>
+    <string name="breed_labrador">Labrador Retriever</string>
+    <string name="breed_siberian_husky">Siberian Husky</string>
+    <string name="breed_dachshund">Dachshund</string>
+    <string name="breed_german_shepherd">German Shepherd</string>
+
+    <!-- Gender -->
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+
+    <!-- Personality Traits -->
+    <string name="trait_playful">Playful</string>
+    <string name="trait_gentle">Gentle</string>
+    <string name="trait_mischievous">Mischievous</string>
+    <string name="trait_energetic">Energetic</string>
+    <string name="trait_patient">Patient</string>
+    <string name="trait_loyal">Loyal</string>
+    <string name="trait_affectionate">Affectionate</string>
+    <string name="trait_intelligent">Intelligent</string>
+
+    <!-- App Info -->
+    <string name="app_description">Woof is a dog lover\'s app showcasing adorable pups and their personalities</string>
+</resources>
